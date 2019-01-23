@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    <div>
+        <input type="text" v-model="username">
+        <input type="text" v-mpdel="userq">
+        <input type="button" value="提交" @click="show">
+    </div>
+    <ul>
+            <li v-for="item in search()">{{item}}</li>
+    </ul>
+     <ul>
+         <li v-for="(value,index) in list" :key="value.id">{{value.username}}--{{value.userq}}
+          <a href="javascript:" @click="sc(index)">删除</a>
+          <a href="javascript:" @click="cz(index,$event)">操作</a>
+
+         </li>
+     </ul>
+  <input type="text" v-model="value">
+  <ul>
+        <li v-for="item in search()">{{item}}</li>
+  </ul>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+ let vm=new Vue({
+     el:"#app",
+
+     data:{
+         value:"",
+        username:"foo",
+        userq:"ssss",
+         list:[
+             {id:1,username:"alex",userq:"你好"},
+             {id:2,username:"sufei",userq:"你好"}
+
+         ]
+     },
+     methods:{
+         show:function(){
+             this.list.push({
+                 id:this.list.length+1,
+                 username:this.username,
+                 userq:this.userq
+             })
+             
+
+         },
+         sc:function(index){
+             console.log(index)
+             this.list.splice(index,1)
+         },
+         cz:function(index,ev){
+            ev.srcElement.parentNode.style.background='red';
+         },
+         search:function(){
+                    let result=[];
+          this.list.forEach((val,index)=>{
+            if(val.username.indexOf(this.username) !== -1){
+              result.push(val.username);
+            }
+          })
+          console.log(result)
+          return result;
+                }
+     }
+
+ })
+
+</script>
+
+</html>

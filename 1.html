@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <div id="app">
+      <ul>
+          <li v-for="(value,index) in json">{{value}}</li>
+      </ul>
+    <div v-show="bl">
+        div
+
+    </div>
+    <input type="button" v-on:click="show(12,$event)">
+ </div>
+
+    
+</body>
+<script src="js/vue.js"></script>
+<script>
+      let vm=new Vue({
+          el:'#app',
+          data:{
+              title:"<span>sb</span>",
+              json:[1,2,3,4,5],
+              
+              
+          },
+          methods:{
+              show:function(kk,ev){
+                  console.log(kk,ev)
+
+              }
+          }
+      })
+
+    //   let vm = new Vue({
+    //   el:'#app',
+    //   data:{//M
+    //     title:'标题'}
+
+    //   })
+
+    //   let vm = new Vue({
+    //   el:'#app',
+    //   data:{//M
+    //     title:'标题',
+    //     num:110,
+    //     arr:['aa','bb','cc'],
+    //     json:{a:1,b:2},
+    //     strong:'<strong>强壮</strong>'
+    //   }
+
+    // });
+</script>
+</html>

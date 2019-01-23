@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="value">
+        <ul>
+            <li v-for="value in search()">{{value}}</li>
+        </ul>
+
+    </div>
+    
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm=new Vue(
+        {
+            el:'#app',
+            data:{
+                value:"a",
+                list:["july","amily","sudy","amy","sufei"]
+
+            },
+            methods:{
+                search:function(){
+                    let result=[];
+          this.list.forEach((val,index)=>{
+            if(val.indexOf(this.value) !== -1){
+              result.push(val);
+            }
+          })
+          return result;
+                }
+
+            }
+        }
+    )
+   
+</script>
+</html>
